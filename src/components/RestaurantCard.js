@@ -6,10 +6,10 @@ const RestaurantCards = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, avgRating, cuisines, areaName, costForTwo } =
     resData?.info;
-  const {loggedInUser} = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
   // console.log(resData.info);
   return (
-    <div className="card w-[18rem] overflow-hidden flex flex-col gap-3 hover:bg-slate-200 transition-all my-2 rounded-md border-2 border-gray-200 shadow-lg  h-[21rem]">
+    <div className="card w-[18rem] overflow-hidden flex flex-col gap-3  transition-all hover:scale-110 hover:bg-slate-100 my-2 rounded-md border-2 border-gray-200 shadow-lg  h-[21rem]">
       {/* <div className=""> */}
       <img
         src={FOOD_IMAGE + cloudinaryImageId}
@@ -31,7 +31,6 @@ const RestaurantCards = (props) => {
         <span className="px-2">⏰ {resData.info.sla.deliveryTime} mins </span>
       </span>
 
-      {/* </div> */}
     </div>
   );
 };

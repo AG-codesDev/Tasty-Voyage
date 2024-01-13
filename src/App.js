@@ -11,6 +11,8 @@ import Cart from "./components/Cart";
 import UserContext from "./utils/UserContext";
 import User from "./components/User";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 /**
  * Header
@@ -38,12 +40,14 @@ const AppLayout = () => {
   }, []);
   const [userName, setUserName] = useState("");
   return (
-    <UserContext.Provider value={{ loggedInUser: userName,setUserName }}>
-      <div className="app">
-        <Header className />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header className />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

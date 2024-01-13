@@ -28,20 +28,20 @@ const Body = () => {
     const data = await fetch(RESTAURANT_LIST);
     const json = await data.json();
 
-    // console.log(
-    //   json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+    console.log(json);
 
+    // json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setResList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
   if (filteredRestaurant?.length === 0) {
     return <Shimmer />;
   }
+  // console.log(filteredRestaurant)
 
   if (onlineStatus === false)
     return (
@@ -70,14 +70,14 @@ const Body = () => {
               // console.log(filteredResList);
               setFilteredRestaurant(filteredResList);
             }}
-            className="bg-black text-white px-2 py-1 rounded-md text-center hover:bg-blue-500 transition-all "
+            className="bg-slate-950 text-white px-2 active:bg-blue-900 py-1 rounded-md text-center hover:bg-slate-800 transition-all "
           >
             Top Rated ⭐
           </button>
         </div>
 
         <div
-          className="search-container transition-all"
+          className="search-container transition-all "
           onMouseOver={showSearchBar}
           onMouseOut={hideSearchBar}
         >
@@ -99,7 +99,7 @@ const Body = () => {
               );
               setFilteredRestaurant(filterRestaurants);
             }}
-            className=" text-white bg-black px-2 py-1 rounded-md text-center hover:bg-blue-500 transition-all"
+            className=" text-white bg-slate-950 active:bg-blue-900 px-2 py-1 rounded-md text-center hover:bg-slate-800 transition-all"
           >
             <span className="flex gap-2 items-center">
               <span>{" Search "}</span>

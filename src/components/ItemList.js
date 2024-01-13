@@ -24,9 +24,10 @@ const ItemList = ({ items,dummy }) => {
           <div className="item-image ">
             <img
               src={ITEM_IMAGES + item.card.info.imageId}
-              alt="Try it:))"
-              className="w-48 h-36 border-2 border-gray-200 rounded-sm"
+              alt={item.card.info.name}
+              className="w-48 h-36 border-2 border-gray-200 rounded-2xl "
             />
+            <button className="bg-black text-white p-2 relative left-14 mx-auto bottom-11  rounded-md">Add+</button>
           </div>
         </div>
       ))}
