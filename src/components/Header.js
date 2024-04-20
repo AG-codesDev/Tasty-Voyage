@@ -10,7 +10,7 @@ const Header = () => {
   const [loginbtn, Setloginbtn] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
-  const { loggedInUser } = useContext(UserContext);
+  // const { loggedInUser } = useContext(UserContext);
   // console.log(userStatus);
 
   // if no dependency array => useEffect is called on every render
@@ -20,30 +20,33 @@ const Header = () => {
     // console.log("UseEffect called");
   }, [loginbtn]);
 
-  
+  // subscribing to the store using selector
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   return (
-    <div className="header flex bg-slate-50 shadow-md justify-between m-2 mb-5 border-2 border-gray-200 px-10  items-center">
-      <div className="logocontainer w-24">
-        <img src={LOGO} alt="" className="logo rounded-full" />
+    <div className="header z-10 w-full flex justify-between shadow-lg px-10 items-center">
+      <div className="logocontainer w-32 ">
+        <img
+          src="https://foodiesfinder.com/wp-content/uploads/2023/10/1-1-1.png"
+          alt="FoodiesFinder"
+          className="rounded-full h-20"
+        />
       </div>
       <div className="nav-items flex">
         <ul className="flex gap-10 text-lg">
-          <li className="hover:text-red-600">
+          <li className=" text-xl hover:text-orange-500 transition-all font-Russo ">
             <Link to="/">Home</Link>
           </li>
-          <li className="hover:text-green-600 transition-colors">
+          <li className=" text-lg  font-Russo ">
             Online Status: {onlineStatus ? "🟢" : "🔴"}
           </li>
 
-          {/* <li className="hover:text-red-600 transition-colors">
-            <Link to="/grocery">Grocery</Link>
-          </li> */}
-          <li className=" hover:text-red-600 ">
-            <Link to="/cart">🛒Cart- ({cartItems.length} items)</Link>
+          <li className=" text-lg hover:text-orange-500 transition-all font-Russo  ">
+            <Link to="/cart">🛒Cart - {cartItems.length} items</Link>
           </li>
 
-          <li className="hover:text-red-600 transition-colors">
+          {/* <li className=" text-lg font-medium font-sans ">
             <button
               className="login-btn"
               onClick={() => {
@@ -55,9 +58,7 @@ const Header = () => {
               👤{loginbtn}:
             </button>
             {" " + loggedInUser}
-          </li>
-
-          {/* <li className="hover:bg-black hover:text-white transition-colors">Cart</li> */}
+          </li> */}
         </ul>
       </div>
       {/* </div> */}

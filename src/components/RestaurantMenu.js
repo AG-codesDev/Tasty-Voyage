@@ -1,5 +1,4 @@
 // import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
@@ -8,12 +7,11 @@ import { useState } from "react";
 import { ITEM_IMAGES } from "../utils/Constants";
 
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
+  // console.log(resId);
   const resInfo = useRestaurantMenu(resId);
   // console.log(resInfo);
-  const dummy = "dummy data";
-  const [showIndex, setShowIndex] = useState(null);
-
   if (resInfo === null) return <Shimmer2 />;
 
   const {
@@ -23,15 +21,14 @@ const RestaurantMenu = () => {
     areaName,
     totalRatingsString,
     cloudinaryImageId,
-  } = resInfo?.cards[0]?.card?.card?.info;
-  console.log(resInfo?.cards[0]?.card?.card?.info);
+  } = resInfo?.cards[2]?.card?.card?.info;
+  // console.log(resInfo?.cards[0]?.card?.card?.info);
 
   const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-  // console.log(itemCards)
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+  // console.log(itemCards);
 
-  const { cards } = resInfo.cards[2].groupedCard.cardGroupMap.REGULAR;
-
+  const { cards } = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR;
   const categories = cards.filter(
     (c) =>
       c.card?.card?.["@type"] ===
@@ -74,6 +71,7 @@ const RestaurantMenu = () => {
         />
       ))}
     </div>
+    // <div></div>
   );
 };
 

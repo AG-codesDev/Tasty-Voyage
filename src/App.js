@@ -13,6 +13,7 @@ import User from "./components/User";
 import { useState } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import MainContainer from "./components/MainContainer";
 
 /**
  * Header
@@ -28,64 +29,37 @@ import appStore from "./utils/appStore";
  *  -Links
  *  -...
  */
-const Grocery = lazy(() => import("./components/Grocery"));
+// const Grocery = lazy(() => import("./components/Grocery"));
 
-const AppLayout = () => {
-  useEffect(() => {
-    // making an api call and fetching some data and verifying the credentials
-    const data = {
-      name: "Apurva Gaurav",
-    };
-    setUserName(data.name);
-  }, []);
-  const [userName, setUserName] = useState("");
-  return (
-    <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <div className="app">
-          <Header className />
-          <Outlet />
-        </div>
-      </UserContext.Provider>
-    </Provider>
-  );
-};
-
-const appRouter = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />,
+    element: <MainContainer />,
     children: [
       {
         path: "/",
         element: <Body />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
       {
         path: "/cart",
         element: <Cart />,
       },
-
-      {
-        path: "/grocery",
-        element: (
-          <Suspense fallback={<Shimmer />}>
-            <Grocery />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/restaurant/:resId",
-        element: <RestaurantMenu />,
-      },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+function App() {
+  return (
+    <div>
+      <RouterProvider router={router} />
 
-root.render(<RouterProvider router={appRouter} />);
+      {/* <Shimmer /> */}
+    </div>
+  );
+}
+
+export default App;
