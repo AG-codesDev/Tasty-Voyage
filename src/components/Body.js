@@ -4,9 +4,6 @@ import Shimmer from "../components/Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURANT_LIST } from "../utils/Constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import Shimmer2 from "../components/Shimmer2";
-import UserContext from "../utils/UserContext";
-import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -87,7 +84,7 @@ const Body = () => {
     const data = await fetch(RESTAURANT_LIST);
     const json = await data.json();
 
-    // console.log(json);
+    console.log(json);
 
     // json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setResList(

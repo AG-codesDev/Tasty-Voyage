@@ -1,9 +1,6 @@
-import { useEffect, useState, useContext } from "react";
-import { LOGO } from "../utils/Constants";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import useOnlineStatus from "./src/.utils/useOnlineStatus";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -26,39 +23,32 @@ const Header = () => {
 
   return (
     <div className="header z-10 w-full flex justify-between shadow-lg px-10 items-center">
-      <div className="logocontainer w-32 ">
+      <div className="logocontainer w-fit flex items-center">
         <img
-          src="https://foodiesfinder.com/wp-content/uploads/2023/10/1-1-1.png"
+          src="https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png"
           alt="FoodiesFinder"
           className="rounded-full h-20"
         />
+        <div className="flex flex-col">
+          <span className="font-Pacifico text-2xl font-bold">Tasty Voyage</span>
+          <span className="text-xs text-right">by Apurva</span>
+        </div>
       </div>
       <div className="nav-items flex">
         <ul className="flex gap-10 text-lg">
           <li className=" text-xl hover:text-orange-500 transition-all font-Russo ">
             <Link to="/">Home</Link>
           </li>
-          <li className=" text-lg  font-Russo ">
-            Online Status: {onlineStatus ? "🟢" : "🔴"}
+          <li className=" text-xl hover:text-orange-500 transition-all font-Russo ">
+            <Link to="/about">About</Link>
           </li>
 
           <li className=" text-lg hover:text-orange-500 transition-all font-Russo  ">
             <Link to="/cart">🛒Cart - {cartItems.length} items</Link>
           </li>
-
-          {/* <li className=" text-lg font-medium font-sans ">
-            <button
-              className="login-btn"
-              onClick={() => {
-                loginbtn === "Login"
-                  ? Setloginbtn("Logout")
-                  : Setloginbtn("Login");
-              }}
-            >
-              👤{loginbtn}:
-            </button>
-            {" " + loggedInUser}
-          </li> */}
+          <li className=" text-lg hover:text-orange-500 transition-all font-Russo  ">
+            <Link to="/login">Login</Link>
+          </li>
         </ul>
       </div>
       {/* </div> */}

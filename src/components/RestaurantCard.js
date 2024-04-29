@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { FOOD_IMAGE } from "../utils/Constants";
-import UserContext from "../utils/UserContext";
 
 const RestaurantCards = (props) => {
   const { resData } = props;

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Russo: ["Russo One", "sans-serif"],
+        Pacifico: ["Pacifico", "cursive"],
       },
     },
     plugins: [],
