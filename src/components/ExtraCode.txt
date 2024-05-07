@@ -1,0 +1,62 @@
+
+  const [resList, setResList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [topRatedActive, setTopRatedActive] = useState(false);
+  const [fasterDeliveryActive, setFasterDeliveryActive] = useState(false);
+  const [pizzaActive, setPizzaActive] = useState(false);
+  const [dessertsActive, setDessertsActive] = useState(false);
+  const [IndianActive, setIndianActive] = useState(false);
+  const [chineseActive, setChineseActive] = useState(false);
+
+  const toggleTopRated = () => {
+    setTopRatedActive(true);
+    setFasterDeliveryActive(false);
+    setPizzaActive(false);
+    setDessertsActive(false);
+    setIndianActive(false);
+    setChineseActive(false);
+  };
+
+  const toggleFasterDelivery = () => {
+    setFasterDeliveryActive(true);
+    setTopRatedActive(false);
+    setPizzaActive(false);
+    setDessertsActive(false);
+    setIndianActive(false);
+    setChineseActive(false);
+  };
+
+  const togglePizza = () => {
+    setPizzaActive(true);
+    setTopRatedActive(false);
+    setDessertsActive(false);
+    setIndianActive(false);
+    setChineseActive(false);
+    setFasterDeliveryActive(false);
+  };
+
+  const toggleDesserts = () => {
+    setDessertsActive(true);
+    setPizzaActive(false);
+    setTopRatedActive(false);
+    setIndianActive(false);
+    setChineseActive(false);
+    setFasterDeliveryActive(false);
+  };
+
+  const toggleIndian = () => {
+    setIndianActive(true);
+    setPizzaActive(false);
+    setTopRatedActive(false);
+    setChineseActive(false);
+    setFasterDeliveryActive(false);
+    setDessertsActive(false);
+  };
+  const toggleChinese = () => {
+    setChineseActive(true);
+    setDessertsActive(false);
+    setPizzaActive(false);
+    setTopRatedActive(false);
+    setIndianActive(false);
+    setFasterDeliveryActive(false);
+  };

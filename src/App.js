@@ -6,11 +6,13 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Cart from "./components/Cart";
 import MainContainer from "./components/MainContainer";
 import LoginPage from "./components/LoginPage";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainContainer />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",

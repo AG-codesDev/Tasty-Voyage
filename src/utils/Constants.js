@@ -5,14 +5,13 @@ export const FOOD_IMAGE =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 export const MENU_API =
-  "https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.6245109&lng=85.0538705&restaurantId=";
+  "https://delicious-food-server.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=25.5940499&lng=85.1376051&&submitAction=ENTER&restaurantId=";
 
-export const RESTAURANT_LIST =
-  "https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+// export const RESTAURANT_LIST =
+//   "https://delicious-food-server.onrender.com/api/restaurants?lat=25.5940499&lng=85.1376051&page_type=DESKTOP_WEB_LISTING";
 
 export const ITEM_IMAGES =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
 
-// export const RESTAURANT_LIST = `https://api.allorigins.win/get?url=${encodeURIComponent(
-//   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-// )}`;
+export const RESTAURANT_LIST =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";

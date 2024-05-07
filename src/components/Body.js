@@ -1,114 +1,66 @@
 import RestaurantCards from "./RestaurantCard";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import Shimmer from "../components/Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURANT_LIST } from "../utils/Constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import WhatsOnMind from "./WhatsOnMind";
+import TopRestaurantChains from "./TopRestaurantChains";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
-  const [topRatedActive, setTopRatedActive] = useState(false);
-  const [fasterDeliveryActive, setFasterDeliveryActive] = useState(false);
-  const [pizzaActive, setPizzaActive] = useState(false);
-  const [dessertsActive, setDessertsActive] = useState(false);
-  const [IndianActive, setIndianActive] = useState(false);
-  const [chineseActive, setChineseActive] = useState(false);
-
-  const toggleTopRated = () => {
-    setTopRatedActive(true);
-    setFasterDeliveryActive(false);
-    setPizzaActive(false);
-    setDessertsActive(false);
-    setIndianActive(false);
-    setChineseActive(false);
-  };
-
-  const toggleFasterDelivery = () => {
-    setFasterDeliveryActive(true);
-    setTopRatedActive(false);
-    setPizzaActive(false);
-    setDessertsActive(false);
-    setIndianActive(false);
-    setChineseActive(false);
-  };
-
-  const togglePizza = () => {
-    setPizzaActive(true);
-    setTopRatedActive(false);
-    setDessertsActive(false);
-    setIndianActive(false);
-    setChineseActive(false);
-    setFasterDeliveryActive(false);
-  };
-
-  const toggleDesserts = () => {
-    setDessertsActive(true);
-    setPizzaActive(false);
-    setTopRatedActive(false);
-    setIndianActive(false);
-    setChineseActive(false);
-    setFasterDeliveryActive(false);
-  };
-
-  const toggleIndian = () => {
-    setIndianActive(true);
-    setPizzaActive(false);
-    setTopRatedActive(false);
-    setChineseActive(false);
-    setFasterDeliveryActive(false);
-    setDessertsActive(false);
-  };
-  const toggleChinese = () => {
-    setChineseActive(true);
-    setDessertsActive(false);
-    setPizzaActive(false);
-    setTopRatedActive(false);
-    setIndianActive(false);
-    setFasterDeliveryActive(false);
-  };
+  const [foodItemsHeader, setFoodItemsHeader] = useState([]);
+  const [foodItemImages, setFoodItemImages] = useState([]);
+  const [topRestaurantHeader, setTopRestaurantHeader] = useState("");
+  const [topRestaurantChains, setTopRestaurantChains] = useState([]);
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const onlineStatus = useOnlineStatus();
-
-  // const { loggedInUser, setUserName } = useContext(UserContext);
-  // console.log(loggedInUser);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  // console.log(resList);
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST);
     const json = await data.json();
 
     console.log(json);
 
-    // json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setResList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFoodItemsHeader(json?.data?.cards[0]?.card?.card?.header);
+    setFoodItemImages(
+      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    );
+    setTopRestaurantHeader(json?.data?.cards[1]?.card?.card?.header);
+    setTopRestaurantChains(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
+
+  // console.log(topRestaurantChains);
+
   if (filteredRestaurant?.length === 0) {
     return <Shimmer />;
   }
-  // console.log(filteredRestaurant)
-
-  if (onlineStatus === false)
-    return (
-      <h1>
-        You are offline!! Please check your internet connection and try again!
-      </h1>
-    );
 
   return (
-    <div className="body mt-6 h-fit scroll-smooth ">
-      <div className="SearchBox-btns  flex-col gap-20 items-center justify-center">
+    <div className="body mt-24 h-fit scroll-smooth w-[70%]  mx-auto ">
+      <WhatsOnMind
+        foodItemsHeader={foodItemsHeader}
+        foodItemImages={foodItemImages}
+      />
+      <TopRestaurantChains
+        topRestaurantHeader={topRestaurantHeader}
+        topRestaurantChains={topRestaurantChains}
+      />
+
+      {/* <div className="SearchBox-btns mt-20  flex-col gap-20 items-center justify-center">
         <div className="search-container w-2/3 mx-auto justify-center flex items-center    ">
           {
             <input
@@ -117,7 +69,7 @@ const Body = () => {
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
-              className="border-2  border-gray-300 w-2/3 px-2 py-1 text-gray-600 focus:outline-none focus:border-2 focus:border-gray-400 rounded-md text-center text-lg m-4"
+              className="border-2  border-gray-300 w-2/3 px-2 py-1 text-gray-600 focus:outline-none focus:border-2 focus:border-gray-300 rounded-md text-center text-lg m-4"
               placeholder="⌕ Search for Restaurants"
             />
           }
@@ -135,7 +87,6 @@ const Body = () => {
         </div>
 
         <div className="btns mx-auto my-5  flex w-4/5   justify-between px-5 ">
-          {/* clear filter btn */}
           <div className="clearfltrbtn flex">
             <button
               className="bg-gray-900 text-white font-semibold  p-2 rounded-md text-center hover:bg-gray-800 active:bg-red-600 active:text-black transition-all "
@@ -159,7 +110,6 @@ const Body = () => {
           <div className="allotherbtns flex gap-10 ">
             <button
               onClick={() => {
-                // console.log("Top Rated clicked");
                 const filteredResList = resList.filter(
                   (res) => res.info.avgRating >= 4
                 );
@@ -175,7 +125,6 @@ const Body = () => {
               Top Rated ★
             </button>
 
-            {/* faster delivery btn*/}
             <button
               onClick={() => {
                 const fasterDeliveryRestaurants = resList.filter(
@@ -193,7 +142,6 @@ const Body = () => {
               30 min delivery ⏱︎
             </button>
 
-            {/* Pizzas btn */}
             <button
               onClick={() => {
                 const pizzaFood = resList.filter((res) =>
@@ -211,7 +159,6 @@ const Body = () => {
               Pizzas🍕
             </button>
 
-            {/* Desserts btn */}
             <button
               onClick={() => {
                 const dessertFood = resList.filter((res) =>
@@ -229,7 +176,6 @@ const Body = () => {
               Desserts 😋
             </button>
 
-            {/* Indian btn */}
             <button
               onClick={() => {
                 const indianFood = resList.filter((res) =>
@@ -247,7 +193,6 @@ const Body = () => {
               Indian 🍚
             </button>
 
-            {/* Chinese btn */}
             <button
               onClick={() => {
                 const chineseFood = resList.filter((res) =>
@@ -266,16 +211,6 @@ const Body = () => {
             </button>
           </div>
         </div>
-
-        {/* <div>
-  <label>UserName: </label>
-  <input
-    type="text"
-    className="border-2 border-black p-2"
-    value={loggedInUser}
-    onChange={(e) => setUserName(e.target.value)}
-  />
-</div> */}
       </div>
 
       <div className="res-container flex flex-wrap relative justify-center gap-6 px-4  ">
@@ -288,7 +223,7 @@ const Body = () => {
             <RestaurantCards resData={restaurant} />
           </Link>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Russo: ["Russo One", "sans-serif"],
+        Poppins: ["Poppins", "sans-serif"],
         Pacifico: ["Pacifico", "cursive"],
       },
     },
