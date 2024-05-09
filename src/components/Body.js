@@ -1,11 +1,11 @@
 import RestaurantCards from "./RestaurantCard";
-import { useState, useEffect, useContext, useRef } from "react";
-import Shimmer from "../components/Shimmer";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RESTAURANT_LIST } from "../utils/Constants";
-import useOnlineStatus from "../utils/useOnlineStatus";
 import WhatsOnMind from "./WhatsOnMind";
 import TopRestaurantChains from "./TopRestaurantChains";
+import SearchBar_Button from "./SearchBar_Button";
+import { MdNoFood } from "react-icons/md";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -14,7 +14,10 @@ const Body = () => {
   const [foodItemImages, setFoodItemImages] = useState([]);
   const [topRestaurantHeader, setTopRestaurantHeader] = useState("");
   const [topRestaurantChains, setTopRestaurantChains] = useState([]);
-
+  const [
+    onlineFoodDeliveryRestaurantHeader,
+    setOnlineFoodDeliveryRestaurantHeader,
+  ] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const Body = () => {
     const data = await fetch(RESTAURANT_LIST);
     const json = await data.json();
 
-    console.log(json);
+    // console.log(json);
 
     setResList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -41,190 +44,77 @@ const Body = () => {
     setTopRestaurantChains(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setOnlineFoodDeliveryRestaurantHeader(
+      json?.data?.cards[2]?.card?.card?.title
+    );
   };
 
-  // console.log(topRestaurantChains);
-
-  if (filteredRestaurant?.length === 0) {
-    return <Shimmer />;
-  }
+  // console.log(filteredRestaurant);
 
   return (
-    <div className="body mt-24 h-fit scroll-smooth w-[70%]  mx-auto ">
-      <WhatsOnMind
-        foodItemsHeader={foodItemsHeader}
-        foodItemImages={foodItemImages}
-      />
-      <TopRestaurantChains
-        topRestaurantHeader={topRestaurantHeader}
-        topRestaurantChains={topRestaurantChains}
-      />
+    <>
+      <div className="body mt-24 h-fit scroll-smooth w-[70%]  mx-auto ">
+        <WhatsOnMind
+          foodItemsHeader={foodItemsHeader}
+          foodItemImages={foodItemImages}
+        />
+        <TopRestaurantChains
+          topRestaurantHeader={topRestaurantHeader}
+          topRestaurantChains={topRestaurantChains}
+        />
 
-      {/* <div className="SearchBox-btns mt-20  flex-col gap-20 items-center justify-center">
-        <div className="search-container w-2/3 mx-auto justify-center flex items-center    ">
-          {
-            <input
-              type="text"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
-              }}
-              className="border-2  border-gray-300 w-2/3 px-2 py-1 text-gray-600 focus:outline-none focus:border-2 focus:border-gray-300 rounded-md text-center text-lg m-4"
-              placeholder="⌕ Search for Restaurants"
-            />
-          }
-          <button
-            className="bg-orange-600 p-2 rounded-md text-white font-bold hover:bg-orange-500 transition-all"
-            onClick={() => {
-              const filterRestaurants = resList.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurant(filterRestaurants);
-            }}
-          >
-            Search ⌕
-          </button>
-        </div>
-
-        <div className="btns mx-auto my-5  flex w-4/5   justify-between px-5 ">
-          <div className="clearfltrbtn flex">
-            <button
-              className="bg-gray-900 text-white font-semibold  p-2 rounded-md text-center hover:bg-gray-800 active:bg-red-600 active:text-black transition-all "
-              onClick={() => {
-                const filteredResList = resList.filter(
-                  (res) => res.info.avgRating <= 5
-                );
-                setFilteredRestaurant(filteredResList);
-                setTopRatedActive(false);
-                setFasterDeliveryActive(false);
-                setPizzaActive(false);
-                setDessertsActive(false);
-                setIndianActive(false);
-                setChineseActive(false);
-              }}
-            >
-              Clear Filters ❌
-            </button>
-          </div>
-
-          <div className="allotherbtns flex gap-10 ">
-            <button
-              onClick={() => {
-                const filteredResList = resList.filter(
-                  (res) => res.info.avgRating >= 4
-                );
-                setFilteredRestaurant(filteredResList);
-                toggleTopRated();
-              }}
-              className={
-                topRatedActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              Top Rated ★
-            </button>
-
-            <button
-              onClick={() => {
-                const fasterDeliveryRestaurants = resList.filter(
-                  (res) => res.info.sla.deliveryTime <= 30
-                );
-                setFilteredRestaurant(fasterDeliveryRestaurants);
-                toggleFasterDelivery();
-              }}
-              className={
-                fasterDeliveryActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              30 min delivery ⏱︎
-            </button>
-
-            <button
-              onClick={() => {
-                const pizzaFood = resList.filter((res) =>
-                  res.info.cuisines.toString().includes("Pizzas")
-                );
-                setFilteredRestaurant(pizzaFood);
-                togglePizza();
-              }}
-              className={
-                pizzaActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              Pizzas🍕
-            </button>
-
-            <button
-              onClick={() => {
-                const dessertFood = resList.filter((res) =>
-                  res.info.cuisines.toString().includes("Desserts")
-                );
-                setFilteredRestaurant(dessertFood);
-                toggleDesserts();
-              }}
-              className={
-                dessertsActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              Desserts 😋
-            </button>
-
-            <button
-              onClick={() => {
-                const indianFood = resList.filter((res) =>
-                  res.info.cuisines.toString().includes("Indian")
-                );
-                setFilteredRestaurant(indianFood);
-                toggleIndian();
-              }}
-              className={
-                IndianActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              Indian 🍚
-            </button>
-
-            <button
-              onClick={() => {
-                const chineseFood = resList.filter((res) =>
-                  res.info.cuisines.toString().includes("Chinese")
-                );
-                setFilteredRestaurant(chineseFood);
-                toggleChinese();
-              }}
-              className={
-                chineseActive
-                  ? "bg-slate-600 text-white font-semibold  p-2 rounded-md text-center"
-                  : "text-black font-bold  p-2 rounded-md text-center bg-slate-200 transition-all hover:bg-slate-300"
-              }
-            >
-              Chinese 🍜
-            </button>
+        <div className="res-container flex mt-20 flex-col">
+          <h1 className="font-bold text-2xl ml-3 font-Poppins">
+            {onlineFoodDeliveryRestaurantHeader}
+          </h1>
+          <SearchBar_Button
+            resList={resList}
+            setFilteredRestaurant={setFilteredRestaurant}
+            filteredRestaurant={filteredRestaurant}
+          />
+          <div className=" flex flex-wrap justify-evenly">
+            {filteredRestaurant.map((restaurant, i) => (
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurant/" + restaurant.info.id}
+              >
+                <RestaurantCards resData={restaurant} />
+              </Link>
+            ))}
+            {filteredRestaurant.length === 0 && (
+              <div className="flex items-center gap-3 font-bold font-Poppins text-2xl text-red-600">
+                <span>
+                  <MdNoFood />
+                </span>
+                <span> Sorry the item is not available :(</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-      <div className="res-container flex flex-wrap relative justify-center gap-6 px-4  ">
-        {filteredRestaurant.map((restaurant, i) => (
-          <Link
-            key={restaurant.info.id}
-            to={"/restaurant/" + restaurant.info.id}
-          >
-            {" "}
-            <RestaurantCards resData={restaurant} />
-          </Link>
-        ))}
-      </div> */}
-    </div>
+      <div className="footer mt-10 bg-gray-200 ">
+        <div className="flex items-center gap-10 py-5 justify-center">
+          <h1 className="text-xl font-bold font-Poppins text-gray-900">
+            For better experience,download the app now
+          </h1>
+          <div className="imgBox flex">
+            <img
+              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/play_store.png"
+              alt=""
+              className="h-14 w-44"
+            />
+            <img
+              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/app_store.png"
+              alt=""
+              className="h-14 w-44"
+            />
+          </div>
+        </div>
+        <div className="myName bg-black text-white text-center py-4 font-serif">
+          Made with 😋 by Apurva Gaurav
+        </div>
+      </div>
+    </>
   );
 };
 

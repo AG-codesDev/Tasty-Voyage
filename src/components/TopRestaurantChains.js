@@ -6,7 +6,7 @@ import { GoDotFill } from "react-icons/go";
 
 const TopRestaurantChains = ({ topRestaurantHeader, topRestaurantChains }) => {
   const ScrollBar = useRef();
-  console.log(topRestaurantChains);
+  // console.log(topRestaurantChains);
   const scrollLeft = () => {
     ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft + 1100;
     // console.log(ScrollBar);
@@ -18,36 +18,40 @@ const TopRestaurantChains = ({ topRestaurantHeader, topRestaurantChains }) => {
   };
   return (
     <div className=" my-10  flex flex-col">
-      <h1 className="font-bold text-2xl ml-3 font-Poppins">
-        {topRestaurantHeader.title}
-      </h1>
-      <span className="flex gap-3 self-end">
-        <span>
-          <FaArrowLeft
-            size={33}
-            className="bg-gray-200 rounded-full p-2 opacity-70 hover:opacity-100 cursor-pointer"
-            onClick={scrollRight}
-          />
+      <div className="flex justify-between">
+        <h1 className="font-bold text-2xl ml-3 font-Poppins">
+          {topRestaurantHeader.title}
+        </h1>
+        <span className="flex gap-3 self-end">
+          <span>
+            <FaArrowLeft
+              size={33}
+              className="bg-gray-200 rounded-full p-2 opacity-70 hover:opacity-100 cursor-pointer"
+              onClick={scrollRight}
+            />
+          </span>
+          <span>
+            <FaArrowRight
+              size={33}
+              className="bg-gray-200 rounded-full p-2 opacity-70 hover:opacity-100 cursor-pointer"
+              onClick={scrollLeft}
+            />
+          </span>
         </span>
-        <span>
-          <FaArrowRight
-            FaArrowLeft
-            size={33}
-            className="bg-gray-200 rounded-full p-2 opacity-70 hover:opacity-100 cursor-pointer"
-            onClick={scrollLeft}
-          />
-        </span>
-      </span>
+      </div>
       <div
-        className="flex flex-nowrap my-3 overflow-x-auto scroll-smooth no-scrollbar"
+        className="flex flex-nowrap mt-5 overflow-x-auto scroll-smooth no-scrollbar"
         ref={ScrollBar}
       >
         {topRestaurantChains.map((res) => (
-          <div className="flex-grow-0 flex-shrink-0 basis-auto">
+          <div
+            className="flex-grow-0 flex-shrink-0 hover:scale-95 transition-all cursor-pointer basis-auto"
+            key={res.info.id}
+          >
             <img
               src={FOOD_IMAGE + res.info.cloudinaryImageId}
               alt=""
-              className="h-44 w-64 mx-4 rounded-xl "
+              className="h-44 w-64 mx-4 rounded-xl"
             />
             <div className="ml-4 mt-2 font-Poppins font-medium text-gray-700 flex flex-col">
               <span>{res?.info?.name}</span>

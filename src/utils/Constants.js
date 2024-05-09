@@ -15,3 +15,10 @@ export const ITEM_IMAGES =
 
 export const RESTAURANT_LIST =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+
+// "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6245109&lng=85.0538705&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+
+
+// "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6245109&lng=85.0538705&collection=83656&tags=layout_CCS_Cake&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+
+https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.6245109&lng=85.0538705&collection=80426&tags=layout_CCS_Dosa&sortBy=&filters=&type=rcv2&offset=0&page_type=null
