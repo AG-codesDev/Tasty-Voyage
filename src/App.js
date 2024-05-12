@@ -2,17 +2,14 @@ import React from "react";
 import Body from "./components/Body";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./components/About";
-import RestaurantMenu from "./components/RestaurantMenu";
+import RestaurantPage from "./components/RestaurantPage/RestaurantPage";
 import Cart from "./components/Cart";
 import MainContainer from "./components/MainContainer";
-import LoginPage from "./components/LoginPage";
-import ErrorPage from "./components/ErrorPage";
-
+import SelectedDishPage from "./components/SelectedDishPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainContainer />,
-    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -20,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu />,
+        element: <RestaurantPage />,
       },
       {
         path: "/cart",
@@ -30,9 +27,10 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+
       {
-        path: "/login",
-        element: <LoginPage />,
+        path: "/selectedDish",
+        element: <SelectedDishPage />,
       },
     ],
   },
@@ -40,10 +38,8 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div>
+    <div className="">
       <RouterProvider router={router} />
-
-      {/* <Shimmer /> */}
     </div>
   );
 }

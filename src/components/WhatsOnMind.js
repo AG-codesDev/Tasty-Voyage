@@ -3,17 +3,32 @@ import { FOOD_IMAGE } from "../utils/Constants";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
   const ScrollBar = useRef();
-
+  // console.log(foodItemImages);
   const scrollLeft = () => {
-    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft + 1100;
+    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft + 1050;
     // console.log(ScrollBar);
   };
 
   const scrollRight = () => {
-    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft - 1100;
+    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft - 1050;
     // console.log(ScrollBar);
+  };
+
+  const findCollectionId = (givenURL) => {
+    const url = givenURL;
+    // Define a regex pattern to capture the 'collection_id' value
+    const regex = /[?&]collection_id=([^&]+)/;
+
+    // Find the match
+    const match = regex.exec(url);
+
+    // If there's a match, extract the first capture group (the collection_id value)
+    const collectionId = match ? match[1] : null;
+
+    return collectionId; // Output: 83644
   };
   return (
     <div className="food-items">
@@ -38,15 +53,26 @@ const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
           </span>
         </div>
         <div
-          className="flex overflow-x-scroll scroll-smooth no-scrollbar"
+          className="flex flex-nowrap overflow-x-auto scroll-smooth no-scrollbar"
           ref={ScrollBar}
         >
           {foodItemImages.map((item) => (
-            <img
-              src={FOOD_IMAGE + item.imageId}
+            <div
+              className="flex-grow-0 flex-shrink-0 basis-auto hover:scale-105 transition-all"
               key={item.id}
-              className="h-48 w-48"
-            />
+            >
+              <Link
+                to={
+                  "/selectedDish?collectionID=" +
+                  findCollectionId(item.action.link)
+                }
+              >
+                <img
+                  src={FOOD_IMAGE + item.imageId}
+                  className="h-44 w-44 cursor-pointer"
+                />
+              </Link>
+            </div>
           ))}
         </div>
       </div>

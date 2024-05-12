@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { ITEM_IMAGES } from "../utils/Constants";
+import { FOOD_IMAGE } from "../utils/Constants";
 import { addItem } from "../utils/cartSlice";
 import { useState } from "react";
 
@@ -40,7 +40,7 @@ const ItemList = ({ items }) => {
           </div>
           <div className="item-image h-52">
             <img
-              src={ITEM_IMAGES + item.card.info.imageId}
+              src={FOOD_IMAGE + item.card.info.imageId}
               alt={item.card.info.name}
               className="w-60 h-full  border-2 border-gray-200 rounded-2xl "
             />

@@ -51,7 +51,7 @@ const Header = () => {
             </li>
           </Link>
           <Link to={"/login"}>
-            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-700 font-medium items-center gap-1 flex">
+            <li className="text-gray-700 rounded-md hover:text-orange-500 transition-all font-Poppins font-medium items-center gap-1 flex">
               <span>
                 <CiUser />
               </span>

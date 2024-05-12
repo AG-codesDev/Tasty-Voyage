@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import { clearCart } from "../utils/cartSlice";
-import { ITEM_IMAGES } from "../utils/Constants";
+import { FOOD_IMAGE } from "../utils/Constants";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -46,7 +46,7 @@ const Cart = () => {
           </div>
           <div className="imgBox w-[30%] ">
             <img
-              src={ITEM_IMAGES + cartData.imageId}
+              src={FOOD_IMAGE + cartData.imageId}
               alt=""
               className="h-44 w-full"
             />

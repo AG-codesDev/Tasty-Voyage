@@ -97,7 +97,7 @@ const SearchBar_Button = ({ resList, setFilteredRestaurant }) => {
       : setFilteredRestaurant(filterRestaurants);
   };
   return (
-    <div className="search-container  w-full flex ">
+    <div className="search-container px-5 w-full flex ">
       <input
         type="text"
         onChange={(e) => {
