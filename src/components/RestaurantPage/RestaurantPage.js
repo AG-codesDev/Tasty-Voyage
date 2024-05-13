@@ -18,32 +18,30 @@ const RestaurantPage = () => {
   // console.log(resInfo?.cards[2]?.card?.card?.info);
 
   const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
-  // console.log(cards);
-  // const categories = cards.filter(
-  //   (c) =>
-  //     c.card?.card?.["@type"].includes(
-  //       "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
-  //     ) ||
-  //     c.card?.card?.["@type"].includes(
-  //       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  //     )
-  // );
+  const categories = cards.filter(
+    (c) =>
+      c.card?.card?.["@type"].includes(
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+      ) ||
+      c.card?.card?.["@type"].includes(
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      )
+  );
+  // console.log(categories);
 
   return (
     <div className="flex mt-20 w-[60%] mx-auto flex-col items-center ">
       <RestaurantDetails resInfo={resInfo} />
       <DealsForYouPage resInfo={resInfo} />
       <TopPicksPage resInfo={resInfo} />
-      {/* {categories.map((category, index) => (
+
+      {categories.map((category, index) => (
         <RestaurantCategory
           data={category?.card?.card}
           key={category?.card?.card?.title}
-          showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
         />
-      ))} */}
+      ))}
     </div>
-    // <div></div>
   );
 };
 

@@ -55,7 +55,7 @@ const TopPicksPage = ({ resInfo }) => {
           {carousel.map((card) => (
             <div
               className="flex-shrink-0  flex-grow-0 basis-auto"
-              key={carousel.bannerId}
+              key={card.bannerId}
             >
               <img
                 src={FOOD_IMAGE + card.creativeId}
