@@ -35,16 +35,20 @@ const SelectedDishPage = () => {
   }, []);
 
   return (
-    <div className="mt-28 px-10 mx-auto flex flex-wrap flex-col">
-      <div className="my-3 ">
-        <h1 className="font-Poppins text-4xl font-semibold text-gray-900">
-          {header.title}
-        </h1>
-        <h3 className="font-poppins text-xl text-slate-700">
-          {header.description}
-        </h3>
+    <div className="mt-24 px-10 mx-auto flex flex-wrap flex-col">
+      <div className="my-3 w-fit p-3 bg-gradient-to-t  from-gray-300 shadow-lg rounded-xl ">
+        <div className=" bg-white rounded-xl p-3">
+          <h1 className="font-Poppins text-3xl font-semibold text-gray-900">
+            🍚 {header.title}
+          </h1>
+          <h3 className="font-poppins text-xl text-slate-700">
+            {header.description}
+          </h3>
+        </div>
       </div>
-      <h2 className="text-3xl font-medium mt-5">Restaurants to Explore ;)</h2>
+      <h2 className="text-3xl font-Poppins font-medium mt-5">
+        Restaurants to Explore{" "}
+      </h2>
       {/* <div className="outline"> */}
       <div className="flex gap-4 flex-wrap">
         {filteredCards.map((resCard) => (

@@ -1,61 +1,66 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
-import { CiHome } from "react-icons/ci";
-import { CiShoppingCart } from "react-icons/ci";
-import { CiUser } from "react-icons/ci";
-import { CgDetailsLess } from "react-icons/cg";
+import { MdHome } from "react-icons/md";
+import { FaShoppingCart } from "react-icons/fa";
+import { IoMdInformationCircle } from "react-icons/io";
+import { TbHelpOctagon } from "react-icons/tb";
+import { BiSolidOffer } from "react-icons/bi";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="header z-10 bg-white fixed w-screen top-0 flex flex-col lg:flex-row justify-between shadow-lg px-10 items-center  ">
+    <div className="header z-10 bg-white fixed w-screen top-0 flex flex-col lg:flex-row justify-between shadow-lg px-10 items-center  py-2">
       <div className="logocontainer w-fit flex items-center">
         <img
           src="https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png"
           alt="FoodiesFinder"
-          className="rounded-full lg:h-20 h-14"
+          className="rounded-full lg:h-16 h-14"
         />
         <div className="flex flex-col">
-          <span className="font-Pacifico text-2xl font-bold">Tasty Voyage</span>
-          {/* <span className="text-xs text-right">by Apurva</span> */}
+          <span className="font-Pacifico text-xl font-bold">Tasty Voyage</span>
         </div>
+        {/* <div className="">Location</div> */}
       </div>
       <div className="nav-items flex">
         <ul className="flex gap-10">
           <Link to={"/"}>
-            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-700 font-medium items-center gap-1 flex">
+            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
               <span>
-                <CiHome className="" />
+                <MdHome className="" />
               </span>{" "}
               <span>Home</span>
             </li>
           </Link>
           <Link to={"/about"}>
-            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-700 font-medium items-center gap-1 flex">
+            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
               <span>
-                <CgDetailsLess />
+                <IoMdInformationCircle />
               </span>
               <span>About</span>
             </li>
           </Link>
+          <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
+            <span>
+              <BiSolidOffer />
+            </span>
+            <span>Offers</span>
+          </li>
+          <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
+            <span>
+              <TbHelpOctagon />
+            </span>
+            <span>Help</span>
+          </li>
 
           <Link to={"/cart"}>
-            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-700 font-medium items-center gap-1 flex">
+            <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
               <span>
-                <CiShoppingCart />
+                <FaShoppingCart />
               </span>
-              <span>Cart</span>
-            </li>
-          </Link>
-          <Link to={"/login"}>
-            <li className="text-gray-700 rounded-md hover:text-orange-500 transition-all font-Poppins font-medium items-center gap-1 flex">
               <span>
-                <CiUser />
+                Cart {cartItems.length > 0 && `[${cartItems.length}]`}
               </span>
-              <span>Login</span>
             </li>
           </Link>
         </ul>
