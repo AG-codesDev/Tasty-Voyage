@@ -2,13 +2,12 @@ import { useDispatch } from "react-redux";
 import { FOOD_IMAGE } from "../../utils/Constants";
 import { addItem } from "../../utils/cartSlice";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 // import vegIcon from "../../assets/vegIcon"
 
 const ItemList = ({ items }) => {
   // console.log(items);
-  const [itemAdded, setItemadded] = useState(false);
   const dispatch = useDispatch();
+  const [itemAdded, setItemadded] = useState(false);
 
   const handleAddItem = (item) => {
     // console.log(item);

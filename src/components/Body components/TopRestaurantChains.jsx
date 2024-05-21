@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { FOOD_IMAGE } from "../utils/Constants";
+import { FOOD_IMAGE } from "../../utils/Constants";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";

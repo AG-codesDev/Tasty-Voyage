@@ -5,22 +5,29 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoMdInformationCircle } from "react-icons/io";
 import { TbHelpOctagon } from "react-icons/tb";
 import { BiSolidOffer } from "react-icons/bi";
+import { MdLocationOn } from "react-icons/md";
+import { FaAngleDown } from "react-icons/fa6";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="header z-10 bg-white fixed w-screen top-0 flex flex-col lg:flex-row justify-between shadow-lg px-10 items-center  py-2">
-      <div className="logocontainer w-fit flex items-center">
+      <div className="logocontainer w-fit flex outline justify-center items-center">
         <img
           src="https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png"
           alt="FoodiesFinder"
           className="rounded-full lg:h-16 h-14"
         />
-        <div className="flex flex-col">
-          <span className="font-Pacifico text-xl font-bold">Tasty Voyage</span>
+        <span className="font-Pacifico text-xl font-bold">Tasty Voyage</span>
+        <div className="text-lg flex ml-3 ">
+          <span>
+            <MdLocationOn className="mt-1" />
+          </span>
+          <span>
+            Patna <FaAngleDown />
+          </span>
         </div>
-        {/* <div className="">Location</div> */}
       </div>
       <div className="nav-items flex">
         <ul className="flex gap-10">

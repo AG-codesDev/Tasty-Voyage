@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-import Shimmer2 from "../Shimmer2";
+import Shimmer2 from "../Shimmer UI/Shimmer2";
 import RestaurantDetails from "./RestaurantDetails";
 import DealsForYouPage from "./DealsForYouPage";
 import TopPicksPage from "./TopPicksPage";

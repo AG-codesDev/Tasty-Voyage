@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "./components/Body";
+import Body from "./components/Body components/Body";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import RestaurantPage from "./components/RestaurantPage/RestaurantPage";
