@@ -1,14 +1,18 @@
-import RestaurantCard from "../RestaurantCard";
+import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { RESTAURANT_LIST } from "../../utils/Constants";
 import WhatsOnMind from "./WhatsOnMind";
 import TopRestaurantChains from "./TopRestaurantChains";
 import SearchBar_Button from "./SearchBar_Button";
 import { MdNoFood } from "react-icons/md";
 import Footer from "./Footer";
+import { useSelector } from "react-redux";
+import Shimmer from "../Shimmer UI/Shimmer";
 
 const Body = () => {
+  const data = useSelector((store) => store.sidebar.resList);
+  const json = data;
+  // console.log(json);
+
   const [resList, setResList] = useState([]);
 
   const [foodItemsHeader, setFoodItemsHeader] = useState([]);
@@ -22,14 +26,14 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setData();
+  });
 
-  const fetchData = async () => {
-    const data = await fetch(RESTAURANT_LIST);
-    const json = await data.json();
-
+  const setData = async () => {
     // console.log(json);
+    if (json.length === 0) {
+      return "..";
+    }
 
     setResList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -49,9 +53,9 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.title
     );
   };
-
-  // console.log(filteredRestaurant);
-
+  if (data.length === 0) {
+    return <Shimmer />;
+  }
   return (
     <>
       <div className="body mt-24 h-fit scroll-smooth w-4/5  mx-auto ">
@@ -64,7 +68,7 @@ const Body = () => {
           topRestaurantChains={topRestaurantChains}
         />
 
-        <div className="res-container flex mt-20 flex-col">
+        <div className="res-container flex flex-col">
           <h1 className="font-bold text-2xl ml-3 font-Poppins">
             {onlineFoodDeliveryRestaurantHeader}
           </h1>

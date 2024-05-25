@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SELECTED_FOOD_API } from "../utils/Constants";
-import RestaurantCard from "./RestaurantCard";
+// import RestaurantCard from "./RestaurantCard";
+import RestaurantCard from "../Body components/RestaurantCard";
+import { useSelector } from "react-redux";
 
 const SelectedDishPage = () => {
+  const { latitude, longitude } = useSelector(
+    (store) => store.sidebar.latitudeLongitude
+  );
+  // console.log(latitude);
   const [searchParams] = useSearchParams();
   const collection_id = searchParams.get("collectionID");
   const [header, setHeader] = useState([]);
   const [totalCards, setTotalCards] = useState([]);
 
   const fetchSelectedFoodRestaurants = async () => {
-    const data = await fetch(SELECTED_FOOD_API + collection_id);
+    const data = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${
+        latitude ? latitude : "28.7041"
+      }&lng=${
+        longitude ? longitude : "77.1025"
+      }&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2&offset=0&page_type=null&collection=` +
+        collection_id
+    );
     const json = await data.json();
     // console.log(json);
+    // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2&offset=0&page_type=null&collection="
 
     setHeader(json?.data?.cards[0]?.card?.card);
     // const filteredCards = json?.data?.cards

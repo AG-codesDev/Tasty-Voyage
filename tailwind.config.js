@@ -7,6 +7,9 @@ module.exports = {
         Poppins: ["Poppins", "sans-serif"],
         Pacifico: ["Pacifico", "cursive"],
       },
+      spacing: {
+        "underline-offset": "4px", // Adjust the value as needed
+      },
     },
     plugins: [],
   },

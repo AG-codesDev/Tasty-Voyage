@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FOOD_IMAGE } from "../utils/Constants";
+import { FOOD_IMAGE } from "../../utils/Constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
