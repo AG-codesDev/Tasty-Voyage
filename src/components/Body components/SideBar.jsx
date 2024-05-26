@@ -39,6 +39,13 @@ const SideBar = () => {
       latitude: 12.9716,
       longitude: 77.5946,
     },
+
+    {
+      name: "Delhi",
+      state: "Delhi, India",
+      latitude: 28.6139,
+      longitude: 77.2088,
+    },
     {
       name: "Pune",
       state: "Maharashtra, India",
@@ -51,12 +58,12 @@ const SideBar = () => {
       latitude: 17.4065,
       longitude: 78.4772,
     },
-    {
-      name: "Patna",
-      state: "Bihar, India",
-      latitude: 25.5941,
-      longitude: 85.1376,
-    },
+    // {
+    //   name: "Patna",
+    //   state: "Bihar, India",
+    //   latitude: 25.5941,
+    //   longitude: 85.1376,
+    // },
   ];
   const handleClick = async (cityName, latitude, longitude, state) => {
     const cityResList = await fetch(
@@ -66,14 +73,14 @@ const SideBar = () => {
     dispatch(addResList(json));
     dispatch(setCityDetails({ cityName, state }));
     dispatch(setlatitudeLongitude({ latitude, longitude }));
-    console.log(latitude, longitude);
+    // console.log(latitude, longitude);
 
     navigate("/");
   };
 
   return (
     <div
-      className={` w-1/3 bg-white shadow-2xl shadow-gray-800 flex justify-center h-screen rounded-sm  ease-in-out duration-300 fixed top-0 z-10 ${
+      className={` w-1/3 bg-white shadow-2xl shadow-gray-800 flex justify-center h-screen rounded-sm  ease-in-out duration-300 fixed top-0 z-20 ${
         isMenuOpen ? "translate-x-0" : "-translate-x-[32rem]"
       }`}
     >

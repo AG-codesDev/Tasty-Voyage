@@ -6,7 +6,7 @@ const Bill = () => {
   const findTotalAmount = () => {
     let total_price = 0;
     for (const item of cartItems) {
-      console.log(item.card.info.price / 100);
+      // console.log(item.card.info.price / 100);
       total_price =
         total_price +
         (item.card.info.defaultPrice
@@ -17,25 +17,43 @@ const Bill = () => {
     return total_price;
   };
   return (
-    <div
-      className="payment-details w-96 items-center fixed flex flex-col gap-5 p-3 b bg-gradient-to-t  from-gray-300 
-      rounded-xl ml-[65%] mt-5"
-    >
-      <div className="flex flex-col gap-5 items-center justify-center w-full bg-white p-2">
-        <div className="tems-center fixed flex flex-col gap-5 "></div>
-        <h1 className="font-bold text-2xl">Bill Details</h1>
-        <div className="text-lg font-Poppins font-medium flex flex-col border-b-2 border-black">
-          <span className="total-items">No. of Items: {cartItems.length}</span>
-          <span className="total-items">
-            Item Totals: ₹ {findTotalAmount()}
+    <div className="payment-details-container flex flex-col fixed ml-[65%] w-[30rem] mt-5 p-2">
+      <div className="order-summary mb-3 flex border-b-2 p-2 justify-between">
+        <span className="flex flex-col">
+          <span className="text-2xl font-bold font-Poppins">Order Summary</span>
+          <span className="text-green-600">Overall Savings ₹ 0</span>
+        </span>
+        <span>( {cartItems.length} items )</span>
+      </div>
+
+      <div className="order-value-shipping-Product-discount flex flex-col gap-2 mt-1 mb-8 border-b-2 p-2">
+        <span className="flex justify-between">
+          <span>Order Value</span>
+          <span className="font-medium">₹ {findTotalAmount()}</span>
+        </span>
+
+        <span className="flex justify-between">
+          <span>Delivery</span>
+          <span className="text-green-500">FREE</span>
+        </span>
+
+        <span className="flex justify-between">
+          <span>Product Discount</span>
+          <span> - ₹ 0</span>
+        </span>
+      </div>
+
+      <div className="grandTotal  flex flex-col gap-4 my-2">
+        <span className="flex justify-between">
+          <span className="font-bold text-xl font-Poppins">Grand Total</span>
+          <span className="font-semibold text-lg font-Poppins">
+            ₹ {findTotalAmount()}
           </span>
-        </div>
-        <div className="text-xl font-Poppins font-medium flex flex-col">
-          Amount to Pay: ₹ {findTotalAmount()}
-        </div>
-        <div className="payment-button bg-orange-500 cursor-pointer hover:bg-orange-600 transition-all text-white p-2 rounded-md my-2 w-full text-center font-Poppins self-center">
-          Pay Now
-        </div>
+        </span>
+
+        <button className="bg-orange-500 p-3 font-bold text-white w-full text-center font-Poppins rounded-sm">
+          PLACE ORDER
+        </button>
       </div>
     </div>
   );

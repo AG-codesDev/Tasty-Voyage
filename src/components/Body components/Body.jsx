@@ -10,8 +10,6 @@ import Shimmer from "../Shimmer UI/Shimmer";
 
 const Body = () => {
   const data = useSelector((store) => store.sidebar.resList);
-  const json = data;
-  // console.log(json);
 
   const [resList, setResList] = useState([]);
 
@@ -27,35 +25,37 @@ const Body = () => {
 
   useEffect(() => {
     setData();
-  });
+  }, [data]);
 
   const setData = async () => {
     // console.log(json);
-    if (json.length === 0) {
+    if (data.length === 0) {
       return "..";
     }
 
     setResList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFoodItemsHeader(json?.data?.cards[0]?.card?.card?.header);
+    setFoodItemsHeader(data?.data?.cards[0]?.card?.card?.header);
     setFoodItemImages(
-      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+      data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     );
-    setTopRestaurantHeader(json?.data?.cards[1]?.card?.card?.header);
+    setTopRestaurantHeader(data?.data?.cards[1]?.card?.card?.header);
     setTopRestaurantChains(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setOnlineFoodDeliveryRestaurantHeader(
-      json?.data?.cards[2]?.card?.card?.title
+      data?.data?.cards[2]?.card?.card?.title
     );
   };
   if (data.length === 0) {
     return <Shimmer />;
   }
+  // console.log(filteredRestaurant);
+
   return (
     <>
       <div className="body mt-24 h-fit scroll-smooth w-4/5  mx-auto ">

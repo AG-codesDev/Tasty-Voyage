@@ -38,7 +38,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="header bg-white fixed w-screen top-0 flex flex-col lg:flex-row justify-between shadow-lg px-10 items-center  py-2">
+    <div className="header bg-white fixed w-screen top-0 flex flex-col lg:flex-row justify-between shadow-lg px-10 items-center z-10 py-2">
       <div className="logo-location w-fit flex justify-center items-center ">
         <Link to={"/"}>
           <div className="flex items-center cursor-pointer">
@@ -62,10 +62,10 @@ const Header = () => {
             ref={locationRef}
           >
             <span className="underline-offset font-Poppins text-gray-800 hover:text-orange-500 transition-all ">
-              {cityDetails.length === 0 ? "Delhi" : cityDetails.cityName}
+              {cityDetails.length === 0 ? "Patna" : cityDetails.cityName}
             </span>
             <span className="text-gray-600 text-sm">
-              {cityDetails.length === 0 ? "Delhi, India" : cityDetails.state}
+              {cityDetails.length === 0 ? "Bihar, India" : cityDetails.state}
             </span>
             <span>
               {" "}

@@ -9,10 +9,11 @@ const TopPicksPage = ({ resInfo }) => {
 
   const { card } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap.REGULAR.cards[1].card;
-  // console.log(card);
+  console.log(resInfo);
+  console.log(card);
 
   const { carousel } = card;
-  //   console.log(carousel);
+  console.log(carousel);
 
   const scrollTopPicksLeft = () => {
     topPicksScrollBar.current.scrollLeft =

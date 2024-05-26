@@ -23,7 +23,7 @@ const sideBarSlice = createSlice({
     },
     setlatitudeLongitude: (state, action) => {
       state.latitudeLongitude = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
     },
   },
 });

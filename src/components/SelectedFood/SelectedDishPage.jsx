@@ -24,25 +24,19 @@ const SelectedDishPage = () => {
         collection_id
     );
     const json = await data.json();
-    // console.log(json);
-    // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940499&lng=85.1376051&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2&offset=0&page_type=null&collection="
 
     setHeader(json?.data?.cards[0]?.card?.card);
     // const filteredCards = json?.data?.cards
     setTotalCards(json?.data?.cards);
     // console.log(cards);
   };
-  // console.log(totalCards);
-  // setRelevantCards(
+
   const filteredCards = totalCards.filter(
     (c) =>
       c.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
   );
-  // console.log(filteredCards);
-  // );
-  // setRelevantCards(filteredCards);
-  // console.log(filteredCards);
+
   useEffect(() => {
     fetchSelectedFoodRestaurants();
   }, []);
@@ -67,11 +61,10 @@ const SelectedDishPage = () => {
         {filteredCards.map((resCard) => (
           <RestaurantCard
             resData={resCard?.card?.card}
-            key={resCard?.card?.info?.id}
+            key={resCard?.card?.card?.info?.id}
           />
         ))}
       </div>
-      {/* </div> */}
     </div>
   );
 };
