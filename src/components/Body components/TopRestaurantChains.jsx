@@ -18,7 +18,7 @@ const TopRestaurantChains = ({ topRestaurantHeader, topRestaurantChains }) => {
   return (
     <div className=" my-10 flex flex-col">
       <div className="flex justify-between">
-        <h1 className="font-bold text-2xl ml-3 font-Poppins">
+        <h1 className=" text-2xl font-bold ml-3 font-Poppins">
           {topRestaurantHeader.title}
         </h1>
         <span className="flex gap-3 self-end">

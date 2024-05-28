@@ -51,6 +51,7 @@ const Body = () => {
       data?.data?.cards[2]?.card?.card?.title
     );
   };
+  // console.log(filteredRestaurant);
   if (data.length === 0) {
     return <Shimmer />;
   }
@@ -69,7 +70,7 @@ const Body = () => {
         />
 
         <div className="res-container flex flex-col">
-          <h1 className="font-bold text-2xl ml-3 font-Poppins">
+          <h1 className=" text-2xl ml-3 font-bold font-Poppins">
             {onlineFoodDeliveryRestaurantHeader}
           </h1>
           <SearchBar_Button

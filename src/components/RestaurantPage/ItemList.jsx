@@ -36,12 +36,12 @@ const ItemList = ({ items }) => {
                       className="h-8 w-8"
                     ></img>
                   )}
-                  <span className="item-name font-semibold text-xl">
+                  <span className="item-name font-medium text-xl">
                     {" "}
                     {item.card.info.name}
                   </span>
                 </div>
-                <span className="item-price">
+                <span className="item-price font-bold">
                   ₹{" "}
                   {item.card.info.defaultPrice
                     ? item.card.info.defaultPrice / 100
@@ -86,12 +86,12 @@ const ItemList = ({ items }) => {
                     className="h-8 w-8"
                   ></img>
                 )}
-                <span className="item-name font-semibold text-xl">
+                <span className="item-name font-medium text-xl">
                   {" "}
                   {items.card.info.name}
                 </span>
               </div>
-              <span className="item-price">
+              <span className="item-price font-bold">
                 {" "}
                 ₹{" "}
                 {items.card.info.defaultPrice

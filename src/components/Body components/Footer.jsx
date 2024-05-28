@@ -20,8 +20,8 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className="myName bg-black text-white text-center py-4 font-serif">
-        Made with 😋 by Apurva Gaurav
+      <div className="myName bg-black text-white text-center py-4 font-Poppins">
+        Made with ❤️ by Apurva Gaurav
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import { useSearchParams } from "react-router-dom";
 // import RestaurantCard from "./RestaurantCard";
 import RestaurantCard from "../Body components/RestaurantCard";
 import { useSelector } from "react-redux";
+import Shimmer from "../Shimmer UI/Shimmer";
+import Shimmer3 from "../Shimmer UI/Shimmer3";
 
 const SelectedDishPage = () => {
   const { latitude, longitude } = useSelector(
@@ -17,13 +19,14 @@ const SelectedDishPage = () => {
   const fetchSelectedFoodRestaurants = async () => {
     const data = await fetch(
       `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${
-        latitude ? latitude : "28.7041"
+        latitude ? latitude : "25.5941"
       }&lng=${
-        longitude ? longitude : "77.1025"
+        longitude ? longitude : "85.1376"
       }&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2&offset=0&page_type=null&collection=` +
         collection_id
     );
     const json = await data.json();
+    // console.log(json);
 
     setHeader(json?.data?.cards[0]?.card?.card);
     // const filteredCards = json?.data?.cards
@@ -41,6 +44,10 @@ const SelectedDishPage = () => {
     fetchSelectedFoodRestaurants();
   }, []);
 
+  if (totalCards.length === 0) {
+    return <Shimmer3 />;
+  }
+
   return (
     <div className="mt-24 px-10 mx-auto flex flex-wrap flex-col">
       <div className="my-3 w-fit p-3 bg-gradient-to-t  from-gray-300 shadow-lg rounded-xl ">
@@ -53,7 +60,7 @@ const SelectedDishPage = () => {
           </h3>
         </div>
       </div>
-      <h2 className="text-3xl font-Poppins font-medium mt-5">
+      <h2 className="text-3xl font-Poppins font-semibold mt-7">
         Restaurants to Explore{" "}
       </h2>
       {/* <div className="outline"> */}

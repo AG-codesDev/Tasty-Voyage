@@ -14,7 +14,7 @@ const RestaurantDetails = ({ resInfo }) => {
     locality,
     sla,
   } = resInfo?.cards[2]?.card?.card?.info;
-
+  console.log(resInfo?.cards[2]?.card?.card?.info);
   return (
     <div className="flex w-full flex-col">
       <div className="resDetails  mt-5 mb-10 flex flex-col">
@@ -41,9 +41,11 @@ const RestaurantDetails = ({ resInfo }) => {
                 <span>📍 {locality}</span>
                 <span>({areaName})</span>
               </div>
-              <div>
-                <span>⌛ {sla.slaString}</span>
-              </div>
+              {sla.slaString && (
+                <div>
+                  <span>⌛ {sla.slaString}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>

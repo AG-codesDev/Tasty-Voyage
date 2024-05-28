@@ -51,7 +51,7 @@ const Bill = () => {
           </span>
         </span>
 
-        <button className="bg-orange-500 p-3 font-bold text-white w-full text-center font-Poppins rounded-sm">
+        <button className="bg-orange-500 hover:bg-orange-600 transition-all p-3 font-bold text-white w-full text-center font-Poppins rounded-sm">
           PLACE ORDER
         </button>
       </div>

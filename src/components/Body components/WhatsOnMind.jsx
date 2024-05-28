@@ -32,7 +32,7 @@ const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
   };
   return (
     <div className="food-items">
-      <h1 className="font-bold text-2xl ml-3 font-Poppins">
+      <h1 className="font-Poppins font-bold text-2xl ml-3 ">
         {foodItemsHeader.title}
       </h1>
       <div className=" flex flex-col ">

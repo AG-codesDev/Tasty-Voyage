@@ -40,6 +40,7 @@ const RestaurantPage = () => {
         ))}
       </div>
     </div>
+    // <Shimmer2 />
   );
 };
 
