@@ -10,6 +10,8 @@ import { FaAngleUp } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa6";
 import { toggleSideBar } from "../../utils/sideBarSlice";
 import { useEffect, useRef } from "react";
+import { DEFAULT_RESTAURANT_LIST } from "../../utils/Constants";
+import { addResList } from "../../utils/sideBarSlice";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -19,6 +21,18 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const locationRef = useRef(null);
+
+  // adding default Restaurant list to body
+  const fetchResList = async () => {
+    const response = await fetch(DEFAULT_RESTAURANT_LIST);
+    const json = await response.json();
+
+    dispatch(addResList(json));
+  };
+
+  useEffect(() => {
+    fetchResList();
+  }, []);
 
   const handleLocationClick = (e) => {
     dispatch(toggleSideBar(true));
@@ -79,7 +93,7 @@ const Header = () => {
         </div>
       </div>
       <div className="nav-items flex">
-        <ul className="flex  gap-5 lg:gap-10">
+        <ul className="flex gap-10">
           <Link to={"/"}>
             <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
               <span>
@@ -96,13 +110,13 @@ const Header = () => {
               <span>About</span>
             </li>
           </Link>
-          <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
+          <li className=" hidden hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 md:flex">
             <span>
               <BiSolidOffer />
             </span>
             <span>Offers</span>
           </li>
-          <li className="  hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 flex">
+          <li className=" hidden hover:text-orange-500 transition-all font-Poppins text-gray-500 font-medium items-center gap-1 md:flex">
             <span>
               <TbHelpOctagon />
             </span>

@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
+  console.log(foodItemImages);
   const ScrollBar = useRef();
   // console.log(foodItemImages);
   const scrollLeft = () => {

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineMyLocation } from "react-icons/md";
-import { DEFAULT_RESTAURANT_LIST } from "../../utils/Constants";
 import {
   addResList,
   setCityDetails,
@@ -11,20 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.sidebar.isMenuOpen);
-  // console.log(collection_id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const fetchResList = async () => {
-    const data = await fetch(DEFAULT_RESTAURANT_LIST);
-    const json = await data.json();
-
-    dispatch(addResList(json));
-  };
-
-  useEffect(() => {
-    fetchResList();
-  }, []);
   const cities = [
     {
       name: "Mumbai",
@@ -80,11 +68,11 @@ const SideBar = () => {
 
   return (
     <div
-      className={` w-1/3 bg-white shadow-2xl shadow-gray-800 flex justify-center h-screen rounded-sm  ease-in-out duration-300 fixed top-0 z-20 ${
+      className={` w-[60%] md:w-1/3 bg-white shadow-2xl shadow-gray-800 flex md:justify-center h-screen rounded-sm  ease-in-out duration-300 fixed top-0 z-20 px-2 ${
         isMenuOpen ? "translate-x-0" : "-translate-x-[32rem]"
       }`}
     >
-      <div className="locations mt-10 flex flex-col gap-7 w-1/2  ">
+      <div className="locations mt-10 flex flex-col gap-7">
         {cities.map((city) => (
           <div
             className="border-b-2 p-5 border-gray-300 gap-6 flex items-center cursor-pointer"

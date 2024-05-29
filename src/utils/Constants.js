@@ -8,7 +8,7 @@ export const MENU_API =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.5940499&lng=85.1376051&restaurantId=";
 
 export const DEFAULT_RESTAURANT_LIST =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5941&lng=85.1376&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5941&lng=85.1376&is-seo-homepage-enabled=true";
 
 export const SELECTED_FOOD_API =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5941&lng=85.1376&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2&offset=0&page_type=null&collection=";

@@ -9,7 +9,7 @@ const CartEmptyMessage = () => {
   return (
     <div className=" mt-32 flex items-center justify-center">
       <div className=" flex flex-col items-center">
-        <h1 className="text-orange-500 font-bold font-Poppins text-2xl">
+        <h1 className="text-orange-500 font-bold text-center font-Poppins text-xl md:text-2xl">
           Cart is empty! PLZZ add something :)
         </h1>
         <img

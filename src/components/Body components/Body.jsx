@@ -10,6 +10,7 @@ import Shimmer from "../Shimmer UI/Shimmer";
 
 const Body = () => {
   const data = useSelector((store) => store.sidebar.resList);
+  console.log(data);
 
   const [resList, setResList] = useState([]);
 
@@ -24,46 +25,42 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   useEffect(() => {
-    setData();
+    if (data) {
+      setResList(
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setFilteredRestaurant(
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setFoodItemsHeader(data?.data?.cards[0]?.card?.card?.header || []);
+      setFoodItemImages(
+        data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info ||
+          []
+      );
+      setTopRestaurantHeader(data?.data?.cards[1]?.card?.card?.header || "");
+      setTopRestaurantChains(
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setOnlineFoodDeliveryRestaurantHeader(
+        data?.data?.cards[2]?.card?.card?.title || ""
+      );
+    }
   }, [data]);
 
-  const setData = async () => {
-    // console.log(json);
-    if (data.length === 0) {
-      return "..";
-    }
-
-    setResList(
-      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFoodItemsHeader(data?.data?.cards[0]?.card?.card?.header);
-    setFoodItemImages(
-      data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
-    );
-    setTopRestaurantHeader(data?.data?.cards[1]?.card?.card?.header);
-    setTopRestaurantChains(
-      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setOnlineFoodDeliveryRestaurantHeader(
-      data?.data?.cards[2]?.card?.card?.title
-    );
-  };
-  // console.log(filteredRestaurant);
-  if (data.length === 0) {
-    return <Shimmer />;
-  }
-  // console.log(filteredRestaurant);
-
+  if (!data) return <Shimmer />;
+  console.log(resList);
+  console.log(foodItemImages);
   return (
-    <>
-      <div className="body mt-24 h-fit scroll-smooth w-4/5  mx-auto ">
+    <div>
+      <div className="body mt-24 h-fit scroll-smooth w-4/5 mx-auto ">
         <WhatsOnMind
           foodItemsHeader={foodItemsHeader}
           foodItemImages={foodItemImages}
         />
+
         <TopRestaurantChains
           topRestaurantHeader={topRestaurantHeader}
           topRestaurantChains={topRestaurantChains}
@@ -94,8 +91,12 @@ const Body = () => {
           </div>
         </div>
       </div>
+
       <Footer />
-    </>
+    </div>
+    // <>
+    //   <Shimmer />
+    // </>
   );
 };
 

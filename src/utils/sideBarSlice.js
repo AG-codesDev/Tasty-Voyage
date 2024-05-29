@@ -4,7 +4,7 @@ const sideBarSlice = createSlice({
   name: "sidebar",
   initialState: {
     isMenuOpen: false,
-    resList: [],
+    resList: null,
     cityDetails: [],
     latitudeLongitude: [],
   },
