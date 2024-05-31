@@ -26,7 +26,7 @@ const RestaurantCategory = ({ data }) => {
             className="font-semibold  p-2 cursor-pointer font-Poppins text-xl w-full flex justify-between "
             onClick={handleCategoryClick}
           >
-            <span>{data?.title}</span>
+            <span className="font-bold">{data?.title}</span>
             <span>{isMenuOpen ? <FaAngleUp /> : <FaAngleDown />}</span>
           </span>
           {data.categories && isMenuOpen && (
@@ -43,10 +43,10 @@ const RestaurantCategory = ({ data }) => {
         {data.itemCards && (
           <div className="">
             <span
-              className="font-semibold p-2 cursor-pointer font-Poppins text-xl  w-full flex justify-between "
+              className="font-semibold p-2 transition-all cursor-pointer font-Poppins text-xl  w-full flex justify-between "
               onClick={handleCategoryClick}
             >
-              <span>
+              <span className="text-xl font-bold">
                 {data?.title} ({data?.itemCards?.length})
               </span>
               <span>{isMenuOpen ? <FaAngleUp /> : <FaAngleDown />}</span>

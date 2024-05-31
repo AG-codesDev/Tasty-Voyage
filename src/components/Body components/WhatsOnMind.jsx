@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
-  console.log(foodItemImages);
+  // console.log(foodItemImages);
   const ScrollBar = useRef();
   // console.log(foodItemImages);
   const scrollLeft = () => {
@@ -33,7 +33,7 @@ const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
   };
   return (
     <div className="food-items">
-      <h1 className="font-Poppins font-bold text-2xl ml-3 ">
+      <h1 className="font-Poppins font-bold text-lg lg:text-2xl ml-3 ">
         {foodItemsHeader.title}
       </h1>
       <div className=" flex flex-col ">
@@ -70,7 +70,7 @@ const WhatsOnMind = ({ foodItemImages, foodItemsHeader }) => {
               >
                 <img
                   src={FOOD_IMAGE + item.imageId}
-                  className="h-44 w-44 cursor-pointer"
+                  className="h-32 lg:h-44 w-32 lg:w-44 cursor-pointer"
                 />
               </Link>
             </div>

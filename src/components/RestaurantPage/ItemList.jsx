@@ -20,10 +20,10 @@ const ItemList = ({ items }) => {
         <div className=" flex flex-col">
           {items.map((item) => (
             <div
-              className="flex  flex-row w-full justify-around mb-2 mx-auto "
+              className="flex px-4 flex-row w-full justify-around mb-2 mx-auto "
               key={item.card.info.name}
             >
-              <div className="item-description  p-5 flex flex-col gap-3  w-full ">
+              <div className="  p-5 flex  outline flex-col gap-3  w-full ">
                 <div className="veg-nonveg flex flex-col gap-2">
                   {item.card.info.isVeg === 1 ? (
                     <img
@@ -47,7 +47,7 @@ const ItemList = ({ items }) => {
                     ? item.card.info.defaultPrice / 100
                     : item.card.info.price / 100}
                 </span>
-                <p className="item-quality text-xs ">
+                <p className="item-description hidden lg:block text-xs ">
                   {item.card.info.description}
                 </p>
               </div>
@@ -70,10 +70,10 @@ const ItemList = ({ items }) => {
       ) : (
         <div>
           <div
-            className=" flex  flex-row justify-around mb-2 mx-auto my-2 "
+            className=" flex  flex-row px-4 justify-around mb-2 mx-auto my-2 "
             key={items.card.info.name}
           >
-            <div className="item-description  p-5 flex flex-col gap-3 w-full ">
+            <div className="item-description  p- flex flex-col gap-3 w-full ">
               <div className="veg-nonveg flex flex-col gap-2   ">
                 {items.card.info.isVeg === 1 ? (
                   <img
@@ -98,7 +98,7 @@ const ItemList = ({ items }) => {
                   ? items.card.info.defaultPrice / 100
                   : items.card.info.price / 100}
               </span>
-              <p className="item-quality text-xs ">
+              <p className="item-description hidden lg:block text-xs ">
                 {items.card.info.description}
               </p>
             </div>

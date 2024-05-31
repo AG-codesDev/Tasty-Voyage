@@ -17,7 +17,7 @@ const Bill = () => {
     return total_price;
   };
   return (
-    <div className="payment-details-container flex flex-col fixed ml-[65%] w-[30rem] mt-5 p-2">
+    <div className="payment-details-container flex flex-col lg:fixed lg:ml-[65%] lg:w-[30rem] mt-5 p-2">
       <div className="order-summary mb-3 flex border-b-2 p-2 justify-between">
         <span className="flex flex-col">
           <span className="text-2xl font-bold font-Poppins">Order Summary</span>

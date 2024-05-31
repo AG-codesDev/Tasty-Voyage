@@ -13,7 +13,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="flex mt-24 mx-5">
+    <div className="flex flex-col lg:flex-row mt-28 mx-">
       <CartItems />
       <Bill />
     </div>

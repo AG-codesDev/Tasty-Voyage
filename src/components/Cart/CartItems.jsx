@@ -17,7 +17,7 @@ const CartItems = () => {
   };
 
   return (
-    <div className="cart-items flex flex-col  w-[60%]">
+    <div className="cart-items flex flex-col w-full lg:w-[60%]">
       <div className=" justify-between ml-6 items-center flex">
         <h2 className="font-medium text-2xl font-Poppins">CART 🛒</h2>
         <button
@@ -29,8 +29,11 @@ const CartItems = () => {
       </div>
 
       {cartItems.map((item) => (
-        <div className="single-item w-full flex my-2" key={item.card.info.id}>
-          <div className="imgBox flex flex-col items-center w-1/4">
+        <div
+          className="single-item w-full gap-4 flex my-2"
+          key={item.card.info.id}
+        >
+          <div className="imgBox flex flex-col items-center lg:w-1/4">
             <img
               src={FOOD_IMAGE + item.card.info.imageId}
               alt=""
@@ -43,7 +46,7 @@ const CartItems = () => {
               Delete
             </button>
           </div>
-          <div className="otherDetails w-3/4">
+          <div className="otherDetails mt-4 lg:mt-0 lg:w-3/4">
             <div className="flex gap-2">
               {item.card.info.isVeg === 1 ? (
                 <img
@@ -69,7 +72,7 @@ const CartItems = () => {
                 ? item.card.info.defaultPrice / 100
                 : item.card.info.price / 100}
             </span>
-            <span className="text-sm text-gray-700">
+            <span className="text-sm hidden lg:block text-gray-700">
               {item.card.info.description}
             </span>
           </div>

@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="footer mt-10 bg-gray-200 ">
-      <div className="flex items-center gap-10 py-5 justify-center">
-        <h1 className="text-xl font-bold font-Poppins text-gray-900">
+      <div className="flex-col flex lg:flex-row items-center gap-10 py-5 justify-center">
+        <h1 className="text lg:text-xl font-bold font-Poppins text-gray-900">
           For better experience,download the app now
         </h1>
         <div className="imgBox flex">
@@ -20,6 +20,7 @@ const Footer = () => {
           />
         </div>
       </div>
+
       <div className="myName bg-black text-white text-center py-4 font-Poppins">
         Made with ❤️ by Apurva Gaurav
       </div>

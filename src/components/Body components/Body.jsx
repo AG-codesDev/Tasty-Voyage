@@ -6,11 +6,11 @@ import SearchBar_Button from "./SearchBar_Button";
 import { MdNoFood } from "react-icons/md";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
-import Shimmer from "../Shimmer UI/Shimmer";
+import ShimmerHomePage from "../Shimmer UI/ShimmerHomePage";
 
 const Body = () => {
   const data = useSelector((store) => store.sidebar.resList);
-  console.log(data);
+  // console.log(data);
 
   const [resList, setResList] = useState([]);
 
@@ -50,52 +50,52 @@ const Body = () => {
     }
   }, [data]);
 
-  if (!data) return <Shimmer />;
-  console.log(resList);
-  console.log(foodItemImages);
+  if (!data) return <ShimmerHomePage />;
+  // console.log(resList);
+  // console.log(foodItemImages);
   return (
-    <div>
-      <div className="body mt-24 h-fit scroll-smooth w-4/5 mx-auto ">
-        <WhatsOnMind
-          foodItemsHeader={foodItemsHeader}
-          foodItemImages={foodItemImages}
-        />
+    // <div className="body mt-32 h-fit scroll-smooth  ">
+    //   <div className="w-full lg:w-4/5 mx-auto">
+    //     <WhatsOnMind
+    //       foodItemsHeader={foodItemsHeader}
+    //       foodItemImages={foodItemImages}
+    //     />
 
-        <TopRestaurantChains
-          topRestaurantHeader={topRestaurantHeader}
-          topRestaurantChains={topRestaurantChains}
-        />
+    //     <TopRestaurantChains
+    //       topRestaurantHeader={topRestaurantHeader}
+    //       topRestaurantChains={topRestaurantChains}
+    //     />
 
-        <div className="res-container flex flex-col">
-          <h1 className=" text-2xl ml-3 font-bold font-Poppins">
-            {onlineFoodDeliveryRestaurantHeader}
-          </h1>
-          <SearchBar_Button
-            resList={resList}
-            setFilteredRestaurant={setFilteredRestaurant}
-            filteredRestaurant={filteredRestaurant}
-          />
-          <div className=" flex flex-wrap justify-around">
-            {filteredRestaurant.map((restaurant, i) => (
-              <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-            ))}
+    //     <div className="res-container flex flex-col">
+    //       <h1 className=" text-lg lg:text-2xl font-bold ml-2 font-Poppins">
+    //         {onlineFoodDeliveryRestaurantHeader}
+    //       </h1>
+    //       <SearchBar_Button
+    //         resList={resList}
+    //         setFilteredRestaurant={setFilteredRestaurant}
+    //         filteredRestaurant={filteredRestaurant}
+    //       />
+    //       <div className=" flex flex-wrap justify-around">
+    //         {filteredRestaurant.map((restaurant, i) => (
+    //           <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+    //         ))}
 
-            {filteredRestaurant.length === 0 && (
-              <div className="flex items-center gap-3 font-bold font-Poppins text-2xl text-red-600">
-                <span>
-                  <MdNoFood />
-                </span>
-                <span> Sorry the item is not available :(</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+    //         {filteredRestaurant.length === 0 && (
+    //           <div className="flex items-center gap-3 font-bold font-Poppins text-2xl text-red-600">
+    //             <span>
+    //               <MdNoFood />
+    //             </span>
+    //             <span> Sorry the item is not available :(</span>
+    //           </div>
+    //         )}
+    //       </div>
+    //     </div>
+    //   </div>
 
-      <Footer />
-    </div>
+    //   <Footer />
+    // </div>
     // <>
-    //   <Shimmer />
+    <ShimmerHomePage />
     // </>
   );
 };

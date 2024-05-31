@@ -26,7 +26,7 @@ const TopPicksPage = ({ resInfo }) => {
   };
   return (
     carousel && (
-      <div className="TopPicks my-5">
+      <div className="TopPicks mx-2 my-5">
         <div className="flex justify-between my-2">
           <h2 className="self-start font-bold text-2xl font-Poppins">
             {card.title}
@@ -61,7 +61,7 @@ const TopPicksPage = ({ resInfo }) => {
               <img
                 src={FOOD_IMAGE + card.creativeId}
                 alt=""
-                className="w-72 h-72"
+                className="md:w-72 w-44 h-44 md:h-72"
               />
             </div>
           ))}

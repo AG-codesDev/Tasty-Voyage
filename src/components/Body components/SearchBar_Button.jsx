@@ -97,7 +97,7 @@ const SearchBar_Button = ({ resList, setFilteredRestaurant }) => {
       : setFilteredRestaurant(filterRestaurants);
   };
   return (
-    <div className="search-container px-5 w-full flex ">
+    <div className="search-container w-full flex flex-col lg:flex-row ">
       <input
         type="text"
         onChange={(e) => {
@@ -109,45 +109,45 @@ const SearchBar_Button = ({ resList, setFilteredRestaurant }) => {
           );
           setFilteredRestaurant(filterRestaurants);
         }}
-        className="border-2  border-gray-500 w-2/3 px-2 py-1 text-gray-600 focus:outline-none focus:border-2 focus:border-gray-300 rounded-md text-center text-lg m-4"
+        className="border-2  border-gray-500 w-full px-2 py-1 text-gray-600 focus:outline-none focus:border-2 focus:border-gray-300 rounded-md text-center text-lg my-4 mx-2"
         placeholder="⌕ Search for available Foods"
       />
-      <div className="buttons flex items-center justify-around w-full">
+      <div className="buttons flex items-center justify-around flex-wrap gap-1 w-full">
         <button
-          className={`border-2 border-gray-300 rounded-2xl h-fit p-2 ${
-            fastDeliveryTab ? "border-orange-400" : ""
+          className={`border-4 transition-all border-gray-300 rounded-2xl h-fit p-2 ${
+            fastDeliveryTab ? " text-orange-500 lg:text-lg lg:font-bold" : ""
           } `}
           onClick={handleFastDelivery}
         >
           Fast Delivery
         </button>
         <button
-          className={`border-2 border-gray-300 rounded-2xl h-fit p-2 ${
-            ratingTab ? "border-orange-400" : ""
+          className={`border-4 transition-all border-gray-300 rounded-2xl h-fit p-2 ${
+            ratingTab ? "text-orange-500 lg:text-lg lg:font-bold" : ""
           } `}
           onClick={handleRatingTab}
         >
           Rating 4.0+
         </button>
         <button
-          className={`border-2 border-gray-300 rounded-2xl h-fit p-2 ${
-            nearMeTab ? "border-orange-400" : ""
+          className={`border-4 transition-all border-gray-300 rounded-2xl h-fit p-2 ${
+            nearMeTab ? "text-orange-500 lg:text-lg lg:font-bold" : ""
           } `}
           onClick={handleNearMe}
         >
           Near Me
         </button>
         <button
-          className={`border-2 border-gray-300 rounded-2xl h-fit p-2 ${
-            aboveRs300Tab ? "border-orange-400" : ""
+          className={`border-4 transition-all border-gray-300 rounded-2xl h-fit p-2 ${
+            aboveRs300Tab ? "text-orange-500 lg:text-lg lg:font-bold" : ""
           } `}
           onClick={handleAboveRs300}
         >
           Above Rs 300
         </button>
         <button
-          className={`border-2 border-gray-300 rounded-2xl h-fit p-2 ${
-            lessThan300Tab ? "border-orange-400" : ""
+          className={`border-4 transition-all border-gray-300 rounded-2xl h-fit p-2 ${
+            lessThan300Tab ? "text-orange-500 lg:text-lg lg:font-bold" : ""
           } `}
           onClick={handleLessThan300}
         >

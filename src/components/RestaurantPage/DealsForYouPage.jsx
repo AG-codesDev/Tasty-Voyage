@@ -18,7 +18,7 @@ const DealsForYouPage = ({ resInfo }) => {
       dealsScrollBar.current.scrollLeft - 1210;
   };
   return (
-    <div className="dealsForYou ">
+    <div className="dealsForYou hidden md:block">
       <div className="flex justify-between my-2">
         <h2 className="self-start font-bold text-2xl font-Poppins">
           Deals for you

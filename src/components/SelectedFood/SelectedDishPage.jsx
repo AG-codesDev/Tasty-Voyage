@@ -3,8 +3,8 @@ import { useSearchParams } from "react-router-dom";
 // import RestaurantCard from "./RestaurantCard";
 import RestaurantCard from "../Body components/RestaurantCard";
 import { useSelector } from "react-redux";
-import Shimmer from "../Shimmer UI/Shimmer";
-import Shimmer3 from "../Shimmer UI/Shimmer3";
+// import Shimmer3 from "../Shimmer UI/ShimmerSelectedDishPage";
+import ShimmerSelectedDishPage from "../Shimmer UI/ShimmerSelectedDishPage";
 
 const SelectedDishPage = () => {
   const { latitude, longitude } = useSelector(
@@ -45,12 +45,12 @@ const SelectedDishPage = () => {
   }, []);
 
   if (totalCards.length === 0) {
-    return <Shimmer3 />;
+    return <ShimmerSelectedDishPage />;
   }
 
   return (
-    <div className="mt-24 px-10 mx-auto flex flex-wrap flex-col">
-      <div className="my-3 w-fit p-3 bg-gradient-to-t  from-gray-300 shadow-lg rounded-xl ">
+    <div className="mt-32 px-10 mx-auto flex flex-wrap flex-col">
+      <div className="my-3 w-fit p-3 bg-gradient-to-t mx-auto lg:ml-6 from-gray-300 shadow-lg rounded-xl ">
         <div className=" bg-white rounded-xl p-3">
           <h1 className="font-Poppins text-3xl font-semibold text-gray-900">
             🍚 {header.title}
@@ -60,11 +60,11 @@ const SelectedDishPage = () => {
           </h3>
         </div>
       </div>
-      <h2 className="text-3xl font-Poppins font-semibold mt-7">
+      <h2 className="text-3xl mx-auto lg:ml-8 font-Poppins font-semibold mt-7">
         Restaurants to Explore{" "}
       </h2>
       {/* <div className="outline"> */}
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex justify-around gap-4 flex-wrap">
         {filteredCards.map((resCard) => (
           <RestaurantCard
             resData={resCard?.card?.card}
