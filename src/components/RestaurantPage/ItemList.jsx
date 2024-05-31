@@ -23,7 +23,7 @@ const ItemList = ({ items }) => {
               className="flex px-4 flex-row w-full justify-around mb-2 mx-auto "
               key={item.card.info.name}
             >
-              <div className="  p-5 flex  outline flex-col gap-3  w-full ">
+              <div className="  p-5 flex flex-col gap-3  w-full ">
                 <div className="veg-nonveg flex flex-col gap-2">
                   {item.card.info.isVeg === 1 ? (
                     <img
