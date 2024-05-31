@@ -54,49 +54,46 @@ const Body = () => {
   // console.log(resList);
   // console.log(foodItemImages);
   return (
-    // <div className="body mt-32 h-fit scroll-smooth  ">
-    //   <div className="w-full lg:w-4/5 mx-auto">
-    //     <WhatsOnMind
-    //       foodItemsHeader={foodItemsHeader}
-    //       foodItemImages={foodItemImages}
-    //     />
+    <div className="body mt-32 h-fit scroll-smooth  ">
+      <div className="w-full lg:w-4/5 mx-auto">
+        <WhatsOnMind
+          foodItemsHeader={foodItemsHeader}
+          foodItemImages={foodItemImages}
+        />
 
-    //     <TopRestaurantChains
-    //       topRestaurantHeader={topRestaurantHeader}
-    //       topRestaurantChains={topRestaurantChains}
-    //     />
+        <TopRestaurantChains
+          topRestaurantHeader={topRestaurantHeader}
+          topRestaurantChains={topRestaurantChains}
+        />
 
-    //     <div className="res-container flex flex-col">
-    //       <h1 className=" text-lg lg:text-2xl font-bold ml-2 font-Poppins">
-    //         {onlineFoodDeliveryRestaurantHeader}
-    //       </h1>
-    //       <SearchBar_Button
-    //         resList={resList}
-    //         setFilteredRestaurant={setFilteredRestaurant}
-    //         filteredRestaurant={filteredRestaurant}
-    //       />
-    //       <div className=" flex flex-wrap justify-around">
-    //         {filteredRestaurant.map((restaurant, i) => (
-    //           <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-    //         ))}
+        <div className="res-container flex flex-col">
+          <h1 className=" text-lg lg:text-2xl font-bold ml-2 font-Poppins">
+            {onlineFoodDeliveryRestaurantHeader}
+          </h1>
+          <SearchBar_Button
+            resList={resList}
+            setFilteredRestaurant={setFilteredRestaurant}
+            filteredRestaurant={filteredRestaurant}
+          />
+          <div className=" flex flex-wrap justify-around">
+            {filteredRestaurant.map((restaurant, i) => (
+              <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+            ))}
 
-    //         {filteredRestaurant.length === 0 && (
-    //           <div className="flex items-center gap-3 font-bold font-Poppins text-2xl text-red-600">
-    //             <span>
-    //               <MdNoFood />
-    //             </span>
-    //             <span> Sorry the item is not available :(</span>
-    //           </div>
-    //         )}
-    //       </div>
-    //     </div>
-    //   </div>
+            {filteredRestaurant.length === 0 && (
+              <div className="flex items-center gap-3 font-bold font-Poppins text-2xl text-red-600">
+                <span>
+                  <MdNoFood />
+                </span>
+                <span> Sorry the item is not available :(</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
-    //   <Footer />
-    // </div>
-    // <>
-    <ShimmerHomePage />
-    // </>
+      <Footer />
+    </div>
   );
 };
 

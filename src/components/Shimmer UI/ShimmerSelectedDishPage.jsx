@@ -6,17 +6,17 @@ const ShimmerSelectedDishPage = () => {
     23, 24, 25, 26, 27, 28, 29,
   ];
   return (
-    <div className="ShimmerUI mt-28 px-10 mx-auto gap-6 flex flex-wrap flex-col">
-      <div className="restaurantHeader ml-10 border-8 w-[30rem] rounded-xl flex flex-col gap-4 p-6">
+    <div className="ShimmerUI mt-32 lg:px-10 mx-auto gap-6 flex flex-wrap flex-col">
+      <div className="restaurantHeader lg:ml-10 mx-2 border-8 w-[30rem] rounded-xl flex flex-col gap-4 p-6">
         <div className="title bg-slate-300 animate-pulse w-40 h-6"></div>
         <div className="title bg-slate-300 animate-pulse w-72 h-6"></div>
       </div>
       <div className="exploreContainer">
-        <div className="exploreHeader ml-10 w-80 h-7 bg-slate-300 animate-pulse"></div>
+        <div className="exploreHeader lg:ml-10 mx-auto lg:mx-0 w-4/5 lg:w-80 h-7 bg-slate-300 animate-pulse"></div>
         <div className="cardContainers justify-evenly flex flex-wrap gap-">
           {singleCards.map((number) => (
             <div
-              className="singleCards p-2 my-4 flex flex-col gap-2 w-80"
+              className="singleCards p-2 my-4 flex flex-col gap-2 w-[90%] lg:w-80"
               key={number}
             >
               <div className="img w-full bg-slate-300 animate-pulse h-60"></div>
