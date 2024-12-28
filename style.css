@@ -17,25 +17,6 @@
         /* Firefox */
     }
 
-    .underline-offset {
-        position: relative;
-    }
 
-    .underline-offset::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -0.1em;
-        /* Adjust the value as needed */
-        height: 2px;
-        /* Adjust the thickness as needed */
-        background-color: gray;
-
-    }
-
-    .underline-offset:hover::after {
-        background-color: orange;
-    }
 
 }

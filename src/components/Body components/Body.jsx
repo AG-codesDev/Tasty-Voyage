@@ -18,6 +18,7 @@ const Body = () => {
   const [foodItemImages, setFoodItemImages] = useState([]);
   const [topRestaurantHeader, setTopRestaurantHeader] = useState("");
   const [topRestaurantChains, setTopRestaurantChains] = useState([]);
+
   const [
     onlineFoodDeliveryRestaurantHeader,
     setOnlineFoodDeliveryRestaurantHeader,
